@@ -3,11 +3,15 @@ import { Routes, Route } from 'react-router-dom'
 import './App.css'
 
 // Components
-import HomePage from './components/HomePage/HomePage';
 import NavBar from './components/NavBar/NavBar';
 
+// Pages
+import HomePage from './pages/HomePage';
+import UserPage from './pages/UserPage';
+import GamesPage from './pages/GamesPage';
+import ReviewsPage from './pages/ReviewsPage';
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>

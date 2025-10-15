@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 
-export default function NavBar(){
+export default function NavBar() {
     return (
         <nav className="nav">
             <Link to={'/'} className="link">
                 <h2>Home</h2>
+            </Link>
+            <Link to={'/user'} className="link">
+                <h2>User</h2>
             </Link>
             <Link to={'/games'} className="link">
                 <h2>Games</h2>
