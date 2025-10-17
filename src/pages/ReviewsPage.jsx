@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function HomePage(){
+export default function ReviewPage(){
     const [review, setReview] = useState(null);
 
     useEffect(() => {
