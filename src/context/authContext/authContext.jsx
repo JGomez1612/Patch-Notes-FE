@@ -10,15 +10,17 @@ export default function AuthProvider({ children }) {
     const connStr = "http://localhost:3000/api";
 
     async function signUp(formData) {
-        let res = await axios.post(`${connStr}/user`, formData);
+        const res = await axios.post(`${connStr}/user`, formData);
 
         setCookies("token", res.data.token);
+        return res;
     }
 
     async function login(formData) {
-        let res = await axios.post(`${connStr}/auth`, formData);
+        const res = await axios.post(`${connStr}/auth`, formData);
 
         setCookies("token", res.data.token);
+        return res;
     }
 
     function logout() {

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useAuth } from "../../context/authContext/authContext";
+import { useUser } from "../../context/userContext/userContext";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm({ setNewUser }) {
     const { login } = useAuth();
     const nav = useNavigate();
+    const { setUser } = useUser();
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -17,7 +19,8 @@ export default function LoginForm({ setNewUser }) {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            await login(formData);
+            const res = await login(formData);
+            setUser(res.data.user);
 
             nav("/");
         } catch (err) {
