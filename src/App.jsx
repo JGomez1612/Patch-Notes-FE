@@ -6,10 +6,10 @@ import './App.css'
 import NavBar from './components/NavBar/NavBar';
 
 // Pages
-import HomePage from './pages/HomePage';
-import UserPage from './pages/UserPage';
-import GamesPage from './pages/GamesPage';
-import ReviewsPage from './pages/ReviewsPage';
+import HomePage from './pages/HomePage/HomePage';
+import UserPage from './pages/UserPage/UserPage';
+import GamesPage from './pages/GamesPage/GamesPage';
+import ReviewsPage from './pages/ReviewsPage/ReviewsPage';
 
 function App() {
 
