@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function GamesPage() {
+export default function GamesPage({searchTerm, setSearchTerm, setSelectedGame}) {
     const [games, setGames] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
+    const nav = useNavigate();
 
     useEffect(() => {
         async function getGames() {
@@ -32,6 +33,11 @@ export default function GamesPage() {
         }
     };
 
+    const handleSelect = (game) => {
+        setSelectedGame(game);
+        nav("/gamedetails")
+    }
+
     return (
         <div>
             <h1>Games Gallery</h1>
@@ -49,7 +55,7 @@ export default function GamesPage() {
                 <p>No games found.</p>
             ) : (
                 games.map((g) => (
-                    <div key={g.id}>
+                    <div key={g.id} onClick={() => handleSelect(g)}>
                         <img src={g.background_image} alt={g.name} />
                         <h2>{g.name}</h2>
                     </div>
