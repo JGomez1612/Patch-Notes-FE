@@ -20,7 +20,11 @@ export default function LoginForm({ setNewUser }) {
         e.preventDefault();
         try {
             const res = await login(formData);
-            setUser(res.data.user);
+            setUser({
+                _id: res.data.user.id,
+                username: res.data.user.username,
+                email: res.data.user.email,
+            });
 
             nav("/");
         } catch (err) {
