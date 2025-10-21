@@ -11,11 +11,28 @@ export default function ProfilePage() {
 
         async function fetchProfile() {
             try {
-                const res = await axios.post("http://localhost:3000/api/user/profile", { userId: user._id, });
+                const res = await axios.post("http://localhost:3000/api/user/profile", {
+                    userId: user._id,
+                });
 
-                setProfile(res.data);
+                let reviewsWithImages = [];
+
+                for (const review of res.data.reviews) {
+                    const gameRes = await axios.get(
+                        `http://localhost:3000/api/games/${review.gameId}`
+                    );
+                    reviewsWithImages.push({
+                        ...review,
+                        gameImage: gameRes.data.background_image,
+                    });
+                }
+
+                setProfile({
+                    user: res.data.user,
+                    reviews: reviewsWithImages,
+                });
             } catch (err) {
-                console.error(err.message)
+                console.error(err.message);
             }
         }
 
@@ -24,22 +41,23 @@ export default function ProfilePage() {
 
     if (!profile) return <p>No profile data.</p>;
 
-  return (
-    <div>
-      <h2>{profile.user.username}'s Profile</h2>
+    return (
+        <div>
+            <h2>{profile.user.username}'s Profile</h2>
 
-      <h3>Recent Reviews</h3>
-      {profile.reviews.length === 0 ? (
-        <p>No reviews yet.</p>
-      ) : (
-        profile.reviews.map((review) => (
-          <div key={review._id}>
-            <strong>{review.title}</strong> - {review.rating}/10
-            <p>{review.body}</p>
-          </div>
-        ))
-      )}
-    </div>
-  );
+            <h3>Recent Reviews</h3>
+            {profile.reviews.length === 0 ? (
+                <p>No reviews yet.</p>
+            ) : (
+                profile.reviews.map((review) => (
+                    <div key={review._id}>
+                        <img src={review.gameImage} alt={review.title} width="250px"/>
+                        {review.title} - {review.rating}/10
+                        <p>{review.body}</p>
+                    </div>
+                ))
+            )}
+        </div>
+    );
 }
 

@@ -56,7 +56,7 @@ export default function GamesPage({searchTerm, setSearchTerm, setSelectedGame}) 
             ) : (
                 games.map((g) => (
                     <div key={g.id} onClick={() => handleSelect(g)}>
-                        <img src={g.background_image} alt={g.name} />
+                        <img src={g.background_image} alt={g.name} width="250px"/>
                         <h2>{g.name}</h2>
                     </div>
                 ))
