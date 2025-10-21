@@ -18,8 +18,7 @@ export default function HomePage() {
                     <div>
                         <h1>Welcome to Patch Notes!</h1>
                         <p>Track, review, and share your favorite games!</p>
-                        <button onClick={() => nav("/auth")}>Log In</button>
-                        <button onClick={() => nav("/auth")}>Sign Up</button>
+                        <button onClick={() => nav("/auth")}>Log In / Register</button>
                     </div>
                     ) : (
                     <div>
