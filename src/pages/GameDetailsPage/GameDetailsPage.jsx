@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function GameDetailsPage({ selectedGame }) {
     const [details, setDetails] = useState(null);
-
+    
     useEffect(() => {
         if (!selectedGame) return;
 

@@ -69,7 +69,7 @@ export default function ProfilePage() {
             setProfile({
                 ...profile,
                 reviews: profile.reviews.map((r) =>
-                    r._id === id ? res.data : r
+                    r._id === id ? { ...res.data, gameImage: r.gameImage } : r
                 )
             });
             setEditingReview(null);

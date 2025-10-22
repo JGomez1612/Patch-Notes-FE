@@ -4,6 +4,7 @@ import './App.css'
 
 // Components
 import NavBar from './components/NavBar/NavBar';
+import ProtectedRoutes from './components/ProtectedRoutes';
 
 // Pages
 import HomePage from './pages/HomePage/HomePage';
@@ -23,10 +24,14 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/auth" element={<AuthPage />} />
-        <Route path="/user" element={<UserPage />} />
+
         <Route path="/games" element={<GamesPage searchTerm={searchTerm} setSearchTerm={setSearchterm} setSelectedGame={setSelectedGame} />} />
-        <Route path="/gamedetails" element={<GameDetailsPage selectedGame={selectedGame}/>} />
+        <Route path="/gamedetails" element={<GameDetailsPage selectedGame={selectedGame} />} />
         <Route path="/reviews" element={<ReviewsPage />} />
+
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/user" element={<UserPage />} />
+        </Route>
       </Routes>
     </>
   )

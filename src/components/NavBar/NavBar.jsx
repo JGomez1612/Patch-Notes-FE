@@ -5,7 +5,7 @@ import { useUser } from '../../context/userContext/userContext';
 
 export default function NavBar() {
     const { logout } = useAuth();
-    const { setUser } = useUser();
+    const { user, setUser } = useUser();
     const nav = useNavigate();
 
     function handleLogout() {
@@ -19,17 +19,22 @@ export default function NavBar() {
             <Link to={'/'} className="link">
                 <h2>Home</h2>
             </Link>
-            <Link to={'/user'} className="link">
-                <h2>User</h2>
-            </Link>
+            
+            {user && (
+                <>
+                    <Link to={'/user'} className="link">
+                        <h2>User</h2>
+                    </Link>
+                    <button onClick={handleLogout}>Logout</button>
+                </>
+            )}
+
             <Link to={'/games'} className="link">
                 <h2>Games</h2>
             </Link>
             <Link to={'/reviews'} className="link">
                 <h2>Reviews</h2>
             </Link>
-
-            <button onClick={handleLogout}>Logout</button>
         </nav>
     )
 }

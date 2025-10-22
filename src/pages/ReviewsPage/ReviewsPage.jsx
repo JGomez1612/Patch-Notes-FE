@@ -14,7 +14,7 @@ export default function ReviewPage() {
 
                 for (const review of reviews) {
                     const gameRes = await axios.get(
-                        `http://localhost:3000/api/game/${review.gameId}`
+                        `http://localhost:3000/api/games/${review.gameId}`
                     );
                     reviewsWithImages.push({
                         ...review,
@@ -25,7 +25,7 @@ export default function ReviewPage() {
 
                 setReview(reviewsWithImages);
             } catch (err) {
-                console.err(err.message);
+                console.error(err.message);
             }
         };
 
