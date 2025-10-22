@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import ReviewCard from "../../components/ReviewCard.jsx/ReviewCard";
+import "./ReviewsPage.css"
 import axios from "axios";
 
 export default function ReviewPage() {
@@ -38,17 +40,13 @@ export default function ReviewPage() {
 
     const loaded = () => {
         return (
-            <div>
-                <h1>Reviews</h1>
-                {review.map((review, i) => (
-                    <div key={i} className='reviewCard'>
-                        <h2>{review.title}</h2>
-                        <img src={review.gameImage} alt={review.title} width="250px" />
-                        <p>{review.userId.username} reviewed {review.gameName}</p>
-                        <p>Rating: {review.rating}/10</p>
-                        <p>Review: {review.body}</p>
-                    </div>
-                ))};
+            <div className="reviewsPage">
+                <h1 className="reviewPageTitle">Reviews</h1>
+                <div className="reviewsContainer">
+                    {review.map((review, i) => (
+                        <ReviewCard key={i} review={review} />
+                    ))};
+                </div>
             </div>
         );
     };

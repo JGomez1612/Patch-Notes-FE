@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import GameCard from "../../components/GamesCard/GameCard";
+import GameCard from "../../components/GameCard/GameCard";
 import "./GamesPage.css"
 import axios from "axios";
 
@@ -12,7 +12,8 @@ export default function GamesPage({ searchTerm, setSearchTerm, setSelectedGame }
         async function getGames() {
             try {
                 const apiKey = import.meta.env.VITE_RAWG_API_KEY;
-                const res = await axios.get(`https://api.rawg.io/api/games?key=${apiKey}`);
+                const res = await axios.get(`https://api.rawg.io/api/games?key=${apiKey}&page_size=40`);
+
 
                 setGames(res.data.results);
             } catch (err) {
@@ -27,7 +28,7 @@ export default function GamesPage({ searchTerm, setSearchTerm, setSelectedGame }
 
         try {
             const apiKey = import.meta.env.VITE_RAWG_API_KEY;
-            const res = await axios.get(`https://api.rawg.io/api/games?key=${apiKey}&search=${searchTerm}`);
+            const res = await axios.get(`https://api.rawg.io/api/games?key=${apiKey}&search=${searchTerm}&page_size=40`);
 
             setGames(res.data.results);
         } catch (err) {
@@ -43,7 +44,7 @@ export default function GamesPage({ searchTerm, setSearchTerm, setSelectedGame }
     return (
         <div className="container">
             <div className="header">
-                <h1 className="title">Games Gallery</h1>
+                <h1 className="gamesGalleryTitle">Games Gallery</h1>
                 <form onSubmit={handleSearch} className="searchBar">
                     <input
                         type="text"

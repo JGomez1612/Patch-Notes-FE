@@ -1,0 +1,52 @@
+.reviewCard {
+    display: flex;
+    align-items: center;
+    align-items: flex-start;
+    border-radius: 5px;
+    width: 220px;
+}
+
+.reviewCard img {
+    width: 25%;
+    height: 200px;
+    border: 1px solid #303030;
+    border-radius: 5px;
+}
+
+.reviewContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+
+.reviewTitle {
+    margin: 0px;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.reviewUser {
+    margin: 2px 0 5px 0;
+    font-size: .9rem;
+    color: #a3a3a3;
+}
+
+.userName,
+.gameName {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.reviewRating {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    color:rgb(255, 170, 12)
+}
+
+.reviewBody {
+    margin-top: 5px;
+    max-height: 100px;
+    overflow-y: auto;
+}
