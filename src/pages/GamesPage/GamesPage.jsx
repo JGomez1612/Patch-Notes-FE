@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import GameCard from "../../components/GamesCard/GameCard";
+import "./GamesPage.css"
 import axios from "axios";
 
-export default function GamesPage({searchTerm, setSearchTerm, setSelectedGame}) {
+export default function GamesPage({ searchTerm, setSearchTerm, setSelectedGame }) {
     const [games, setGames] = useState([]);
     const nav = useNavigate();
 
@@ -39,28 +41,28 @@ export default function GamesPage({searchTerm, setSearchTerm, setSelectedGame}) 
     }
 
     return (
-        <div>
-            <h1>Games Gallery</h1>
-            <form onSubmit={handleSearch}>
-                <input
-                    type="text"
-                    placeholder="Search Games..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button type="submit">Search</button>
-            </form>
-
-            {games.length === 0 ? (
-                <p>No games found.</p>
-            ) : (
-                games.map((g) => (
-                    <div key={g.id} onClick={() => handleSelect(g)}>
-                        <img src={g.background_image} alt={g.name} width="250px"/>
-                        <h2>{g.name}</h2>
-                    </div>
-                ))
-            )}
+        <div className="container">
+            <div className="header">
+                <h1 className="title">Games Gallery</h1>
+                <form onSubmit={handleSearch} className="searchBar">
+                    <input
+                        type="text"
+                        placeholder="Search Games..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div className="games">
+                {games.length === 0 ? (
+                    <p>No games found.</p>
+                ) : (
+                    games.map((g) => (
+                        <GameCard key={g.id} game={g} onSelect={handleSelect} />
+                    ))
+                )}
+            </div>
         </div>
     )
 }

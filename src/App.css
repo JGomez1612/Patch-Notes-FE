@@ -3,10 +3,3 @@
   width: 100%;
   background-color: rgb(107, 104, 104);
 }
-
-.container{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: space-around;
-}
