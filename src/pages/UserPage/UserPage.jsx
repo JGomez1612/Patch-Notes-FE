@@ -4,6 +4,8 @@ import { useUser } from "../../context/userContext/userContext";
 
 export default function ProfilePage() {
     const [profile, setProfile] = useState(null);
+    const [editingReview, setEditingReview] = useState(null);
+    const [editData, setEditData] = useState({});
     const { user } = useUser();
 
     useEffect(() => {
@@ -39,6 +41,43 @@ export default function ProfilePage() {
         fetchProfile();
     }, [user]);
 
+    async function handleDelete(id) {
+        if (!window.confirm("Are you sure you want to delete this review?")) return;
+        try {
+            await axios.delete(`http://localhost:3000/api/review/${id}`);
+            setProfile({
+                ...profile,
+                reviews: profile.reviews.filter((r) => r._id !== id),
+            });
+        } catch (err) {
+            console.error(err.message)
+        }
+    }
+
+    function handleEdit(review) {
+        setEditingReview(review._id);
+        setEditData({
+            title: review.title,
+            body: review.body,
+            rating: review.rating,
+        });
+    }
+
+    async function saveEdit(id) {
+        try {
+            const res = await axios.put(`http://localhost:3000/api/review/${id}`, editData);
+            setProfile({
+                ...profile,
+                reviews: profile.reviews.map((r) =>
+                    r._id === id ? res.data : r
+                )
+            });
+            setEditingReview(null);
+        } catch (err) {
+            console.error(err.message);
+        }
+    }
+
     if (!profile) return <p>No profile data.</p>;
 
     return (
@@ -51,9 +90,34 @@ export default function ProfilePage() {
             ) : (
                 profile.reviews.map((review) => (
                     <div key={review._id}>
-                        <img src={review.gameImage} alt={review.title} width="250px"/>
-                        {review.title} - {review.rating}/10
-                        <p>{review.body}</p>
+                        {editingReview === review._id ? (
+                            <>
+                                <input
+                                    type="text"
+                                    value={editData.title}
+                                    onChange={(e) => setEditData({ ...editData, title: e.target.value })}
+                                />
+                                <textarea
+                                    value={editData.body}
+                                    onChange={(e) => setEditData({ ...editData, body: e.target.value })}
+                                />
+                                <input
+                                    type="number"
+                                    value={editData.rating}
+                                    onChange={(e) => setEditData({ ...editData, rating: e.target.value })}
+                                />
+                                <button onClick={() => saveEdit(review._id)}>Save</button>
+                                <button onClick={() => setEditingReview(null)}>Cancel</button>
+                            </>
+                        ) : (
+                            <>
+                                <img src={review.gameImage} alt={review.title} width="250px" />
+                                {review.title} - {review.rating}/10
+                                <p>{review.body}</p>
+                                <button onClick={() => handleEdit(review)}>Edit</button>
+                                <button onClick={() => handleDelete(review._id)}>Delete</button>
+                            </>
+                        )}
                     </div>
                 ))
             )}
