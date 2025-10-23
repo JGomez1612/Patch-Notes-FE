@@ -1,0 +1,92 @@
+.profilePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profilePage h1,
+.profilePage h3 {
+    font-size: 2rem;
+    margin: 10px;
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviewCards {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 80%;
+    margin: 5px;
+    padding: 10px;
+    background: #1e1e1e;
+    color: #ffffff;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+.reviewCards img {
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.reviewContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reviewText {
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.reviewEdit {
+    width: 100%;
+}
+
+.reviewEdit input[type="text"],
+.reviewEdit textarea,
+.reviewEdit input[type="number"] {
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+}
+
+.reviewCards input[type="text"] {
+    width: 50%;
+}
+
+.reviewCards textarea {
+    width: 100%;
+    height: 120px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+
+.reviewCards input[type="number"] {
+    max-width: 80px;
+}
+
+.reviewButtons {
+    background-color: #1b9257;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.reviewButtons:hover {
+    background-color: #146e41;
+}

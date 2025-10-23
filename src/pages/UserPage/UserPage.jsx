@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useUser } from "../../context/userContext/userContext";
+import axios from "axios";
+import "./UserPage.css"
 
 export default function ProfilePage() {
     const [profile, setProfile] = useState(null);
@@ -81,45 +82,50 @@ export default function ProfilePage() {
     if (!profile) return <p>No profile data.</p>;
 
     return (
-        <div>
-            <h2>{profile.user.username}'s Profile</h2>
-
+        <div className="profilePage">
+            <h1>{profile.user.username}'s Profile</h1>
             <h3>Recent Reviews</h3>
             {profile.reviews.length === 0 ? (
                 <p>No reviews yet.</p>
             ) : (
-                profile.reviews.map((review) => (
-                    <div key={review._id}>
-                        {editingReview === review._id ? (
-                            <>
-                                <input
-                                    type="text"
-                                    value={editData.title}
-                                    onChange={(e) => setEditData({ ...editData, title: e.target.value })}
-                                />
-                                <textarea
-                                    value={editData.body}
-                                    onChange={(e) => setEditData({ ...editData, body: e.target.value })}
-                                />
-                                <input
-                                    type="number"
-                                    value={editData.rating}
-                                    onChange={(e) => setEditData({ ...editData, rating: e.target.value })}
-                                />
-                                <button onClick={() => saveEdit(review._id)}>Save</button>
-                                <button onClick={() => setEditingReview(null)}>Cancel</button>
-                            </>
-                        ) : (
-                            <>
-                                <img src={review.gameImage} alt={review.title} width="250px" />
-                                {review.title} - {review.rating}/10
-                                <p>{review.body}</p>
-                                <button onClick={() => handleEdit(review)}>Edit</button>
-                                <button onClick={() => handleDelete(review._id)}>Delete</button>
-                            </>
-                        )}
-                    </div>
-                ))
+                <div className="cardWrapper">
+                    {profile.reviews.map((review) => (
+                        <div className="reviewCards" key={review._id}>
+                            {review.gameImage && <img src={review.gameImage} alt={review.title} />}
+                            <div className="reviewEdit">
+                                {editingReview === review._id ? (
+                                    <>
+                                        <input
+                                            type="text"
+                                            value={editData.title}
+                                            onChange={(e) => setEditData({ ...editData, title: e.target.value })}
+                                        />
+                                        <textarea
+                                            value={editData.body}
+                                            onChange={(e) => setEditData({ ...editData, body: e.target.value })}
+                                        />
+                                        <input
+                                            type="number"
+                                            value={editData.rating}
+                                            onChange={(e) => setEditData({ ...editData, rating: e.target.value })}
+                                        />
+                                        <button className="reviewButtons" onClick={() => saveEdit(review._id)}>Save</button>
+                                        <button className="reviewButtons" onClick={() => setEditingReview(null)}>Cancel</button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className="reviewHeader">
+                                            <h4 className="reviewInfo">{review.title} - {review.rating}/10</h4>
+                                            <p className="reviewText">{review.body}</p>
+                                        </div>
+                                        <button className="reviewButtons" onClick={() => handleEdit(review)}>Edit</button>
+                                        <button className="reviewButtons" onClick={() => handleDelete(review._id)}>Delete</button>
+                                    </>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             )}
         </div>
     );

@@ -16,25 +16,27 @@ export default function NavBar() {
 
     return (
         <nav className="nav">
+            <div className='navLeft'>
             <Link to={'/'} className="link">
                 <h2>Home</h2>
             </Link>
-            
-            {user && (
-                <>
-                    <Link to={'/user'} className="link">
-                        <h2>User</h2>
-                    </Link>
-                    <button onClick={handleLogout}>Logout</button>
-                </>
-            )}
-
             <Link to={'/games'} className="link">
                 <h2>Games</h2>
             </Link>
             <Link to={'/reviews'} className="link">
                 <h2>Reviews</h2>
             </Link>
+            </div>
+            {user && (
+                <div className='navRight'>
+                    <Link to={'/user'} className="link">
+                        <h2>User</h2>
+                    </Link>
+                    <button className="navButton" onClick={handleLogout}>Logout</button>
+                </div>
+            )}
+
+
         </nav>
     )
 }
