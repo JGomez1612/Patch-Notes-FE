@@ -1,11 +1,11 @@
-.container{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: space-around;
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
 }
 
-.header{
+.header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +13,7 @@
     margin-bottom: 20px;
 }
 
-.gamesGalleryTitle{
+.gamesGalleryTitle {
     font-size: 2.5rem;
 }
 
@@ -36,7 +36,7 @@
     font-size: 16px;
     width: 250px;
     border-radius: 4px;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
 }
 
 .searchBar button {
@@ -44,9 +44,13 @@
     font-size: 16px;
     border-radius: 4px;
     border: none;
-    background-color: #2e86de;
-    color: white;
+    background-color: #1b9257;
+    color: #ffffff;
     cursor: pointer;
+}
+
+.searchBar button:hover {
+    background-color: #146e41;
 }
 
 .gameCard {
@@ -70,8 +74,8 @@
     background: #292929;
 }
 
-.gameCard h3{
-    color: #fff;
+.gameCard h3 {
+    color: #ffffff;
     margin: 8px 0;
     font-size: 1rem;
 }

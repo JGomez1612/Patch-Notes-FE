@@ -1,0 +1,35 @@
+.reviewForm {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reviewForm input,
+.reviewForm textarea {
+    width: 100%;
+    padding: 10px;
+    color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.reviewForm button {
+    background-color: #1b9257;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.reviewForm button:hover {
+    background-color: #146e41;
+}

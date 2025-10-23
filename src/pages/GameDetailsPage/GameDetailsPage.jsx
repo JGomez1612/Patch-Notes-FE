@@ -44,22 +44,22 @@ export default function GameDetailsPage({ selectedGame }) {
   if (!selectedGame) return <p>No game selected. Go back to the Games page.</p>;
   if (!details) return <p>Loading game details...</p>;
 
-  return (
-    <div className="gameDetailsContainer">
-      <GameDetailsCard details={details} />
+    return (
+        <div className="gameDetailsContainer">
+            <div className="detailsAndForm">
+                <GameDetailsCard
+                    details={details}
+                    user={user}
+                    showForm={showForm}
+                    onToggleForm={() => setShowForm(!showForm)}
+                />
 
-      {user && (
-        <>
-          <button
-            onClick={() => setShowForm(!showForm)}
-            className="reviewButton"
-          >
-            {showForm ? "Cancel" : "Create Review"}
-          </button>
-
-          {showForm && <ReviewForm onSubmit={handleSubmitReview} />}
-        </>
-      )}
-    </div>
-  );
+                {showForm && (
+                    <div className="formContainer">
+                        <ReviewForm onSubmit={handleSubmitReview} />
+                    </div>
+                )}
+            </div>
+        </div>
+    );
 }

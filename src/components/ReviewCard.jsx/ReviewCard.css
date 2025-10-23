@@ -23,7 +23,7 @@
 .reviewTitle {
     margin: 0px;
     font-size: 1.5rem;
-    color: #fff;
+    color: #ffffff;
 }
 
 .reviewUser {
@@ -36,13 +36,13 @@
 .gameName {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #fff;
+    color: #ffffff;
 }
 
 .reviewRating {
     margin: 0 0 10px 0;
     font-weight: bold;
-    color:rgb(255, 170, 12)
+    color:#ffaa0c
 }
 
 .reviewBody {

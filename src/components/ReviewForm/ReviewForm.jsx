@@ -28,7 +28,7 @@ export default function ReviewForm({ onSubmit }) {
       />
       <textarea
         name="body"
-        placeholder="Write your review..."
+        placeholder="Type out your review here!"
         value={formData.body}
         onChange={handleChange}
         rows={5}
