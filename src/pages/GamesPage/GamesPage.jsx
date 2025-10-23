@@ -14,7 +14,6 @@ export default function GamesPage({ searchTerm, setSearchTerm, setSelectedGame }
                 const apiKey = import.meta.env.VITE_RAWG_API_KEY;
                 const res = await axios.get(`https://api.rawg.io/api/games?key=${apiKey}&page_size=40`);
 
-
                 setGames(res.data.results);
             } catch (err) {
                 console.error(err.message)
