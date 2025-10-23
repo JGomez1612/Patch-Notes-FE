@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../context/authContext/authContext";
 import { useUser } from "../../context/userContext/userContext";
 import { useNavigate } from "react-router-dom";
+import "./AuthForm.css"
 
 export default function LoginForm({ setNewUser }) {
     const { login } = useAuth();
@@ -36,9 +37,9 @@ export default function LoginForm({ setNewUser }) {
     };
 
     return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
+        <div className="authContainer">
+            <form className="authForm" onSubmit={handleSubmit}>
+                <h2 className="authTitle">Login</h2>
                 <label>
                     <input
                         type="email"
@@ -59,10 +60,11 @@ export default function LoginForm({ setNewUser }) {
                     />{" "}
                 </label>
                 <input type="submit" value="Log In" />
+                <div className="authToggle">
+                    <p>Don't have an account?</p>
+                    <button onClick={handleClick}>Register</button>
+                </div>
             </form>
-            <p>
-                Don't have an account? <button onClick={handleClick}>Sign Up</button>
-            </p>
         </div>
     )
 }

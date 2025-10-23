@@ -1,0 +1,79 @@
+.authContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 2rem;
+}
+
+.authForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.authTitle {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.authForm input[type="text"],
+.authForm input[type="email"],
+.authForm input[type="password"] {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.authForm input[type="submit"] {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #1b9257;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.authForm input[type="submit"]:hover {
+    background-color: #146e41;
+}
+
+.authToggle {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.authToggle p {
+    margin: 15px;
+    font-size: 1.2rem;
+    color:#ffffff;
+}
+
+.authToggle button {
+    margin: 10;
+    padding: 10px;
+    background-color: #1b9257;
+    border-radius: 5px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.authToggle button:hover {
+    background-color: #146e41;
+}

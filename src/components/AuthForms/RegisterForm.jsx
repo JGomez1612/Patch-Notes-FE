@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../context/authContext/authContext";
 import { useNavigate } from "react-router-dom";
+import "./Authform.css"
 
 export default function RegisterForm({ setNewUser }) {
     const { signUp } = useAuth();
@@ -34,9 +35,9 @@ export default function RegisterForm({ setNewUser }) {
         setNewUser(false);
     };
     return (
-        <div>
-            <h2>Register</h2>
-            <form onSubmit={handleSubmit}>
+        <div className="authContainer">
+            <form className="authForm" onSubmit={handleSubmit}>
+                <h2 className="authTitle">Register</h2>
                 <label>
                     <input type="text"
                         name="username"
@@ -72,10 +73,11 @@ export default function RegisterForm({ setNewUser }) {
                     />
                 </label>
                 <input type="submit" value="Sign Up" />
+                <div className="authToggle">
+                    <p>Already have an account?</p>
+                    <button onClick={handleClick}>Log In</button>
+                </div>
             </form>
-            <p>
-                Already have an account? <button onClick={handleClick}>Log In</button>
-            </p>
         </div>
     )
 }
